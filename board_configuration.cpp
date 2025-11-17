@@ -100,7 +100,7 @@ static void customBoardDefaultConfiguration() {
 
     // Flex
     engineConfiguration->flexPin = Gpio::C14;
-}
+
 
 }
 
