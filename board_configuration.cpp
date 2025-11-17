@@ -1,3 +1,4 @@
+#warning "PINAGEM CONFIG OK"
 #include "pch.h"
 #include "board_overrides.h"
 
