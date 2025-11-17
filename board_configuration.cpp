@@ -1,49 +1,73 @@
 #include "pch.h"
 #include "board_overrides.h"
 
-Gpio getCommsLedPin() {
-	return Gpio::Unassigned;
-}
+// LEDs não usados
+Gpio getCommsLedPin()    { return Gpio::Unassigned; }
+Gpio getRunningLedPin()  { return Gpio::Unassigned; }
+Gpio getWarningLedPin()  { return Gpio::Unassigned; }
 
-Gpio getRunningLedPin() {
-	return Gpio::Unassigned;
-}
-
-Gpio getWarningLedPin() {
-	return Gpio::Unassigned;
-}
-
-// board-specific configuration setup
+// ***********************
+//  CONFIGURAÇÃO DO SEU BOARD
+// ***********************
 static void customBoardDefaultConfiguration() {
-    // engineConfiguration->injectionPins[0] = Gpio::F13;
-    // engineConfiguration->ignitionPins[0] = Gpio::E15;
 
-//   engineConfiguration->triggerInputPins[0] = Gpio::B1;
-//	engineConfiguration->triggerInputPins[1] = Gpio::Unassigned;
+    // --------------------------
+    // INJETORAS
+    // --------------------------
+    engineConfiguration->injectionPins[0] = Gpio::PB7;
+    engineConfiguration->injectionPins[1] = Gpio::PB6;
+    engineConfiguration->injectionPins[2] = Gpio::PB5;
+    engineConfiguration->injectionPins[3] = Gpio::PB4;
 
-//	engineConfiguration->map.sensor.hwChannel = EFI_ADC_3;
+    // --------------------------
+    // IGNIÇÃO
+    // --------------------------
+    engineConfiguration->ignitionPins[0] = Gpio::PB9;
+    engineConfiguration->ignitionPins[1] = Gpio::PB8;
+    engineConfiguration->ignitionPins[2] = Gpio::PB3;
+    engineConfiguration->ignitionPins[3] = Gpio::PA15;
 
-//	engineConfiguration->clt.adcChannel = EFI_ADC_1;
+    // --------------------------
+    // ENTRADAS ANALÓGICAS
+    // --------------------------
+    engineConfiguration->tps1_1 = Gpio::A2;
+    engineConfiguration->map.sensorPin = Gpio::A3;
+    engineConfiguration->iat.sensorPin = Gpio::A0;
+    engineConfiguration->clt.sensorPin = Gpio::A1;
+    engineConfiguration->o2.sensorPin = Gpio::A8;
+    engineConfiguration->vbattAdcChannel = Gpio::A4;
 
-//	engineConfiguration->iat.adcChannel = EFI_ADC_2;
+    // baro usa o MAP
+    engineConfiguration->baroSensorPin = engineConfiguration->map.sensorPin;
 
+    // --------------------------
+    // SAÍDAS DIVERSAS
+    // --------------------------
+    engineConfiguration->tachOutputPin = Gpio::PB1;
+    engineConfiguration->idle.solenoidPin = Gpio::PB2;
+    engineConfiguration->stepperDirectionPin = Gpio::PB10;
+    engineConfiguration->stepperStepPin = Gpio::PB2;
+    engineConfiguration->boostPin = Gpio::PA6;
+    engineConfiguration->fuelPumpPin = Gpio::PA8;
+    engineConfiguration->fanPin = Gpio::PA5;
 
-    	// 5.6k high side/10k low side = 1.56 ratio divider
-  //  	engineConfiguration->analogInputDividerCoefficient = 1.56f;
+    // --------------------------
+    // TRIGGERS E FLEX
+    // --------------------------
+    engineConfiguration->triggerInputPins[0] = Gpio::PC13;
+    engineConfiguration->triggerInputPins[1] = Gpio::PC15;
+    engineConfiguration->flexPin = Gpio::PC14;
 
-    	// 6.34k high side/ 1k low side
-//    	engineConfiguration->vbattDividerCoeff = (6.34 + 1) / 1;
-
-//	engineConfiguration->adcVcc = 3.3f;
-
-//	engineConfiguration->clt.config.bias_resistor = 2490;
-//	engineConfiguration->iat.config.bias_resistor = 2490;
-
-
-	// Battery sense on PA0
-//	engineConfiguration->vbattAdcChannel = EFI_ADC_0;
+    // --------------------------
+    // LIMITES
+    // --------------------------
+    engineConfiguration->maxInjectors = 4;
+    engineConfiguration->maxCylinders = 4;
 }
 
+// ***************
+// REGISTRA O BOARD
+// ***************
 void setup_custom_board_overrides() {
     custom_board_DefaultConfiguration = customBoardDefaultConfiguration;
 }
