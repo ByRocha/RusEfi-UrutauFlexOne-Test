@@ -69,10 +69,10 @@ static void customBoardDefaultConfiguration() {
     engineConfiguration->map.sensor.hwChannel = EFI_ADC_3;
 
     // IAT = A0
-    engineConfiguration->iat.AdcChannel = EFI_ADC_0;
+    engineConfiguration->iat.adcChannel = EFI_ADC_0;
 
     // CLT = A1
-    engineConfiguration->clt.AdcChannel = EFI_ADC_1;
+    engineConfiguration->clt.adcChannel = EFI_ADC_1;
 
     // O2 = A8 -> precisa confirmar canal ADC!
     engineConfiguration->afr.hwChannel = EFI_ADC_8;
