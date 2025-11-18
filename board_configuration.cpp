@@ -62,16 +62,17 @@ static void customBoardDefaultConfiguration() {
     // ANALÓGICOS (ADC)
     // ----------------------
     // TPS = A2
-    engineConfiguration->tps1_1_adcChannel = EFI_ADC_2;
+    engineConfiguration->tps1_1AdcChannel = EFI_ADC_2;
+	
 
     // MAP = A3
     engineConfiguration->map.sensor.hwChannel = EFI_ADC_3;
 
     // IAT = A0
-    engineConfiguration->iat.adcChannel = EFI_ADC_0;
+    engineConfiguration->iat.AdcChannel = EFI_ADC_0;
 
     // CLT = A1
-    engineConfiguration->clt.adcChannel = EFI_ADC_1;
+    engineConfiguration->clt.AdcChannel = EFI_ADC_1;
 
     // O2 = A8 -> precisa confirmar canal ADC!
     engineConfiguration->afr.hwChannel = EFI_ADC_8;
@@ -88,7 +89,7 @@ static void customBoardDefaultConfiguration() {
     // ----------------------
     engineConfiguration->tachOutputPin = Gpio::B1;
     engineConfiguration->idle.solenoidPin = Gpio::B2;
-    engineConfiguration->boostPin = Gpio::A6;
+    //engineConfiguration->boostPin = Gpio::A6;
     engineConfiguration->fuelPumpPin = Gpio::A8;
     engineConfiguration->fanPin = Gpio::A5;
 
@@ -99,7 +100,7 @@ static void customBoardDefaultConfiguration() {
     engineConfiguration->triggerInputPins[1] = Gpio::C15;
 
     // Flex
-    engineConfiguration->flexPin = Gpio::C14;
+    //engineConfiguration->flexPin = Gpio::C14;
 
 
 }
