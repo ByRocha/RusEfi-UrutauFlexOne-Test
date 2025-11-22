@@ -3,4 +3,4 @@
 //
 
 #define SIGNATURE_HASH 253716378
-#define TS_SIGNATURE "rusEFI main.2025.11.21.UrutauFlexOneByRocha.253716378"
+#define TS_SIGNATURE "rusEFI main.2025.11.22.UrutauFlexOneByRocha.253716378"
